@@ -17,12 +17,12 @@ namespace ToyRobotSimulator.Models
             YPosition = y;
         }
 
+        public int XPosition { get; set; }
+        public int YPosition { get; set; }
+
         public override string ToString()
         {
             return $"{XPosition},{YPosition}";
         }
-
-        public int XPosition { get; set; }
-        public int YPosition { get; set; }
     }
 }
