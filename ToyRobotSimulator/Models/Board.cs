@@ -17,9 +17,13 @@ namespace ToyRobotSimulator.Models
         public int Width { get; private set; }
         public int Height { get; private set; }
 
-        //  Checks to see if position is valid on the board
-        //  - Cannot be less than 0
-        //  - Cannot be greater or equal to board height/width
+        /// <summary>
+        /// Checks to see if the position is valid on the board
+        /// - Cannot have positions less than 0
+        /// - Cannot have positions greater or equal to board height/width
+        /// </summary>
+        /// <param name="newPosition"></param>
+        /// <returns></returns>
         public bool IsValidPosition(Position newPosition)
         {
             if (newPosition.XPosition >= Width || newPosition.YPosition >= Height)

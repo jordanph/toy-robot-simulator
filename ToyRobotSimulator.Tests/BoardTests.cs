@@ -50,7 +50,7 @@ namespace ToyRobotSimulator.Tests
 
             var board = new Board(width, height);
 
-            var position = new Position(0, height + 1);
+            var position = new Position(0, height + 1, Direction.North);
 
             Assert.False(board.IsValidPosition(position));
         }
@@ -63,7 +63,7 @@ namespace ToyRobotSimulator.Tests
 
             var board = new Board(width, height);
 
-            var position = new Position(width + 1, 0);
+            var position = new Position(width + 1, 0, Direction.North);
 
             Assert.False(board.IsValidPosition(position));
         }

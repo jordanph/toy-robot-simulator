@@ -14,7 +14,7 @@ namespace ToyRobotSimulator.Tests
             try
             {
                 Board board = null;
-                var position = new Position(0, 0);
+                var position = new Position(0, 0, Direction.North);
 
                 var robot = new Robot(board, position);
             }
@@ -54,7 +54,7 @@ namespace ToyRobotSimulator.Tests
                 int width = 5;
 
                 var board = new Board(width, height);
-                var position = new Position(width + 1, height + 1);
+                var position = new Position(width + 1, height + 1, Direction.North);
 
                 var robot = new Robot(board, position);
             }
