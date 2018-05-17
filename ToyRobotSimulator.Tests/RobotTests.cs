@@ -66,5 +66,46 @@ namespace ToyRobotSimulator.Tests
             Assert.True(false, "Must pass in a position that isn't off the board.");
         }
 
+        [Fact]
+        public void LeftRotation()
+        {
+            var position = new Position(0, 0, Direction.North);
+            var board = new Board(5, 5);
+
+            var robot = new Robot(board, position);
+
+            robot.Left();
+            Assert.True(position.Direction == Direction.West);
+
+            robot.Left();
+            Assert.True(position.Direction == Direction.South);
+
+            robot.Left();
+            Assert.True(position.Direction == Direction.East);
+
+            robot.Left();
+            Assert.True(position.Direction == Direction.North);
+        }
+
+        [Fact]
+        public void RightRotation()
+        {
+            var position = new Position(0, 0, Direction.North);
+            var board = new Board(5, 5);
+
+            var robot = new Robot(board, position);
+
+            robot.Right();
+            Assert.True(position.Direction == Direction.East);
+
+            robot.Right();
+            Assert.True(position.Direction == Direction.South);
+
+            robot.Right();
+            Assert.True(position.Direction == Direction.West);
+
+            robot.Right();
+            Assert.True(position.Direction == Direction.North);
+        }
     }
 }

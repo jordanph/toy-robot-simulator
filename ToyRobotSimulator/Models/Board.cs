@@ -12,6 +12,9 @@ namespace ToyRobotSimulator.Models
             {
                 throw new ArgumentOutOfRangeException("Both width and height values must be greater than 0.");
             }
+
+            Width = width;
+            Height = height;
         }
 
         public int Width { get; private set; }

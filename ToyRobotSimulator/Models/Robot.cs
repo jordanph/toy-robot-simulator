@@ -13,12 +13,28 @@ namespace ToyRobotSimulator.Models
 
             if (!Board.IsValidPosition(Position))
             {
-                throw new InvalidOperationException("Position if off the board. You must pass in a valid position.");
+                throw new InvalidOperationException("Position is off the board. You must pass in a valid position.");
             }
 
         }
 
         public Board Board { get; private set; }
         public Position Position { get; private set; }
+
+        /// <summary>
+        /// Rotates the robot 90 degress to the left.
+        /// </summary>
+        public void Left()
+        {
+            Position.Left();
+        }
+
+        /// <summary>
+        /// Rotates the robot 90 degrees to the right.
+        /// </summary>
+        public void Right()
+        {
+            Position.Right();
+        }
     }
 }
