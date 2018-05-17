@@ -16,5 +16,20 @@ namespace ToyRobotSimulator.Models
 
         public int Width { get; set; }
         public int Height { get; set; }
+
+        public bool IsValidPosition(Position newPosition)
+        {
+            if (newPosition.XPosition >= Width || newPosition.YPosition >= Height)
+            {
+                return false;
+            }
+
+            if (newPosition.XPosition < 0 || newPosition.YPosition < 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

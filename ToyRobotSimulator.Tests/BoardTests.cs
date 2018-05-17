@@ -41,5 +41,31 @@ namespace ToyRobotSimulator.Tests
 
             Assert.True(false, "Height cannot be less or equal to zero.");
         }
+
+        [Fact]
+        public void YPositionGreaterThanHeight()
+        {
+            int width = 5;
+            int height = 5;
+
+            var board = new Board(width, height);
+
+            var position = new Position(0, height + 1);
+
+            Assert.False(board.IsValidPosition(position));
+        }
+
+        [Fact]
+        public void XPositionGreaterThanWidth()
+        {
+            int width = 5;
+            int height = 5;
+
+            var board = new Board(width, height);
+
+            var position = new Position(width + 1, 0);
+
+            Assert.False(board.IsValidPosition(position));
+        }
     }
 }
