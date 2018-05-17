@@ -4,3 +4,5 @@
 
 /.vs
 /ToyRobotSimulator/obj
+/ToyRobotSimulator.Tests/bin/Debug/netcoreapp2.0
+/ToyRobotSimulator.Tests/obj
