@@ -85,23 +85,23 @@ namespace ToyRobotSimulator.Tests
         {
             var position = new Position(0, 0, Direction.North);
 
-            position.Move();
-            Assert.True(position.YPosition == 1 && position.XPosition == 0);
+            var newPosition = position.Move();
+            Assert.True(newPosition.YPosition == 1 && newPosition.XPosition == 0);
 
             position = new Position(0, 0, Direction.East);
 
-            position.Move();
-            Assert.True(position.YPosition == 0 && position.XPosition == 1);
+            newPosition = position.Move();
+            Assert.True(newPosition.YPosition == 0 && newPosition.XPosition == 1);
 
             position = new Position(0, 0, Direction.South);
 
-            position.Move();
-            Assert.True(position.YPosition == -1 && position.XPosition == 0);
+            newPosition = position.Move();
+            Assert.True(newPosition.YPosition == -1 && newPosition.XPosition == 0);
 
             position = new Position(0, 0, Direction.West);
 
-            position.Move();
-            Assert.True(position.YPosition == 0 && position.XPosition == -1);
+            newPosition = position.Move();
+            Assert.True(newPosition.YPosition == 0 && newPosition.XPosition == -1);
         }
     }
 }
