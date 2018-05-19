@@ -4,12 +4,12 @@ using ToyRobotSimulator.Models;
 
 namespace ToyRobotSimulator
 {
-    class Program
+    public class Program
     {
         private const int BoardWidth = 5;
         private const int BoardHeight = 5;
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the toy robot simulator!");
             Console.WriteLine($"To get started, please place the robot on the {BoardWidth}x{BoardHeight} board using PLACE x-positon,y-position,direction.");
@@ -24,19 +24,18 @@ namespace ToyRobotSimulator
 
             while(!exitApplication)
             {
-                Console.Write(">");
-
                 var userInput = Console.ReadLine().Trim();
 
                 var output = inputProcessor.ProcessInput(userInput);
 
                 if (!string.IsNullOrWhiteSpace(output))
                 {
+                    if (output == ValidInputs.Exit)
+                    {
+                        exitApplication = true;
+                    }
+
                     Console.WriteLine(output);
-                }
-                else if (output == ValidInputs.Exit)
-                {
-                    exitApplication = true;
                 }
             }
         }

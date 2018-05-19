@@ -1,0 +1,9 @@
+Welcome to the toy robot simulator!
+To get started, please place the robot on the 5x5 board using PLACE x-positon,y-position,direction.
+Please use the HELP option at any time to see the valid inputs or EXIT to close the application.
+
+Position is off the board. Please ensure the xPosition is between 0 and 4, and the yPosition is between 0 and 4.
+Position is off the board. Please ensure the xPosition is between 0 and 4, and the yPosition is between 0 and 4.
+Position is off the board. Please ensure the xPosition is between 0 and 4, and the yPosition is between 0 and 4.
+0,0,EAST
+EXIT

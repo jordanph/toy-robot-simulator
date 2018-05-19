@@ -17,4 +17,14 @@
     <ProjectReference Include="..\ToyRobotSimulator\ToyRobotSimulator.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="TestInputFiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestInputFiles\TestInput1.txt">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
