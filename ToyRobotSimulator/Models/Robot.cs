@@ -13,7 +13,7 @@ namespace ToyRobotSimulator.Models
 
             if (!Board.IsValidPosition(Position))
             {
-                throw new InvalidOperationException("Position is off the board. You must pass in a valid position.");
+                throw new InvalidOperationException($"Position is off the board. Please ensure the xPosition is between 0 and {Board.Width-1}, and the yPosition is between 0 and {Board.Height-1}.");
             }
 
         }
