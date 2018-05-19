@@ -15,6 +15,7 @@ namespace ToyRobotSimulator.Models
 
             XPosition = x;
             YPosition = y;
+            Direction = direction;
         }
 
         public int XPosition { get; private set; }
@@ -65,9 +66,33 @@ namespace ToyRobotSimulator.Models
             }
         }
 
+        /// <summary>
+        /// Moves the position forward by one depending on direction.
+        /// </summary>
+        public Position Move()
+        {
+            switch (Direction)
+            {
+                case Direction.North:
+                    YPosition++;
+                    break;
+                case Direction.East:
+                    XPosition++;
+                    break;
+                case Direction.South:
+                    YPosition--;
+                    break;
+                case Direction.West:
+                    XPosition--;
+                    break;
+            }
+
+            return this;
+        }
+
         public override string ToString()
         {
-            return $"{XPosition},{YPosition}";
+            return $"{XPosition},{YPosition},{Direction.ToString().ToUpper()}";
         }
     }
 

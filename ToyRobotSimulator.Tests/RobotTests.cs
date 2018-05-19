@@ -107,5 +107,82 @@ namespace ToyRobotSimulator.Tests
             robot.Right();
             Assert.True(position.Direction == Direction.North);
         }
+
+        [Fact]
+        public void FallOffBoardEast()
+        {
+            var height = 5;
+            var width = 5;
+
+            var board = new Board(width, height);
+            var position = new Position(width - 1, height - 1, Direction.East);
+            var robot = new Robot(board, position);
+
+            Assert.False(robot.Move());
+        }
+
+        [Fact]
+        public void FallOffBoardWest()
+        {
+            var height = 5;
+            var width = 5;
+
+            var board = new Board(width, height);
+            var position = new Position(0, height - 1, Direction.West);
+            var robot = new Robot(board, position);
+
+            Assert.False(robot.Move());
+        }
+
+        [Fact]
+        public void FallOffBoardNorth()
+        {
+            var height = 5;
+            var width = 5;
+
+            var board = new Board(width, height);
+            var position = new Position(width - 1, height - 1, Direction.North);
+            var robot = new Robot(board, position);
+
+            Assert.False(robot.Move());
+        }
+
+        [Fact]
+        public void FallOffBoardSouth()
+        {
+            var height = 5;
+            var width = 5;
+
+            var board = new Board(width, height);
+            var position = new Position(width - 1, 0, Direction.South);
+            var robot = new Robot(board, position);
+
+            Assert.False(robot.Move());
+        }
+
+        [Fact]
+        public void ReturnValidReportOfPosition()
+        {
+            var height = 5;
+            var width = 5;
+
+            var board = new Board(width, height);
+
+            var xPos = 0;
+            var yPos = 0;
+            var direction = Direction.North;
+
+            var position = new Position(xPos, yPos, direction);
+            var robot = new Robot(board, position);
+
+            Assert.True(robot.Report() == $"{xPos},{yPos},{direction.ToString().ToUpper()}");
+
+            robot.Move();
+            Assert.True(robot.Report() == $"{xPos},{yPos+1},{direction.ToString().ToUpper()}");
+
+            robot.Right();
+            robot.Move();
+            Assert.True(robot.Report() == $"{xPos+1},{yPos+1},{Direction.East.ToString().ToUpper()}");
+        }
     }
 }

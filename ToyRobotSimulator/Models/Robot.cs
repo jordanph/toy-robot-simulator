@@ -36,5 +36,31 @@ namespace ToyRobotSimulator.Models
         {
             Position.Right();
         }
+
+        /// <summary>
+        /// Moves the robot forward by one depending on its direction.
+        /// </summary>
+        /// <returns>Returns false if the move falls off the board.</returns>
+        public bool Move()
+        {
+            var newPosition = Position.Move();
+
+            if (Board.IsValidPosition(newPosition))
+            {
+                Position = newPosition;
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Returns the position of the robot.
+        /// </summary>
+        /// <returns>Position of the robot with Xpos,Ypos,Direction</returns>
+        public string Report()
+        {
+            return Position.ToString();
+        }
     }
 }
