@@ -1,103 +1,119 @@
 # toy-robot-simulator
 Description
 -----------
-A simulation of a toy robot moving on a tabletop, of dimensions 5 units x 5 units. See Specifications below for details. The contstraints of the 5x5 table can be changed by modifying the constant values BoardWidth and BoardHeight in Program.cs.  
+A simulation of a toy robot moving on a table top with dimensions of 5 x 5. There are no other obstructions on the table surface which means that the robot is free to move around. However, the robot is not allowed to fall off the table and this is prevented from happening in the application (subsequent valid movements are still allowed).
+
+The contstraints of the 5x5 table can be changed by modifying the constant values BoardWidth and BoardHeight in ToyRobotSimulator/Program.cs.  
+
+Installation
+-----------
+This guide assumes that dotnet is already installed on your system.
+
+    git clone https://github.com/jordanph/toy-robot-simulator.git
+    cd toy-robot-simulator
+    dotnet build
 
 Usage
 -----------
+To run the application from the base folder use the below command.
 
-    $ dotnet ToyRobotSimulator.dll optional:your_input_commands.txt
+    $ dotnet run --project ToyRobotSimulator
+    
+You can also choose an input file to be read into the application.
 
-Specifications
------------
+    $ dotnet run --project ToyRobotSimulator < your_input_file.txt
 
-- The application is a simulation of a toy robot moving on a square tabletop,
-  of dimensions 5 units x 5 units.
-- There are no other obstructions on the table surface.
-- The robot is free to roam around the surface of the table, but must be
-  prevented from falling to destruction. Any movement that would result in the
-  robot falling from the table must be prevented, however further valid
-  movement commands must still be allowed.
+Valid Commands
+--------------
 
-Create an application that can read in commands of the following (textual) form:
+The valid commands for the program are as follows:
 
-    PLACE X,Y,F
-    MOVE
-    LEFT
-    RIGHT
-    REPORT
+### PLACE X,Y,DIRECTION
 
-- PLACE will put the toy robot on the table in position X,Y and facing NORTH,
-  SOUTH, EAST or WEST.
-- The origin (0,0) can be considered to be the SOUTH WEST most corner.
-- The first valid command to the robot is a PLACE command, after that, any
-  sequence of commands may be issued, in any order, including another PLACE
-  command. The application should discard all commands in the sequence until
-  a valid PLACE command has been executed.
-- MOVE will move the toy robot one unit forward in the direction it is
-  currently facing.
-- LEFT and RIGHT will rotate the robot 90 degrees in the specified direction
-  without changing the position of the robot.
-- REPORT will announce the X,Y and F of the robot. This can be in any form,
-  but standard output is sufficient.
+Places the toy robot on the table at the specified X and Y coordinates facing the NORTH, EAST, SOUTH or WEST direction. If the robot is already placed on the table, issuing another PLACE command will move the robot to the new position. 
 
-- A robot that is not on the table can choose the ignore the MOVE, LEFT, RIGHT
-  and REPORT commands.
-- Input can be from a file, or from standard input, as the developer chooses.
-- Provide test data to exercise the application.
-- The application must be a command line application.
+**Note:** The other robot actions of MOVE, LEFT, RIGHT and REPORT cannot be ran until the robot has been placed on the table.
 
-Constraints
------------
+### MOVE
 
-- The toy robot must not fall off the table during movement. This also
-  includes the initial placement of the toy robot.
-- Any move that would cause the robot to fall must be ignored.
+Moves the robot forward in the direction it is facing by one unit. If the robot is at the edge of the table, the move command will not work as it would cause the robot to fall off the table.
+
+### LEFT
+
+Rotates the robot 90 degrees to the left.
+
+### RIGHT
+
+Rotates the robot 90 degrees to the right.
+
+### REPORT
+
+Displays the current position of the robot: X-Position,Y-Position,Direction eg. 1,1,EAST.
+
+### HELP
+
+Displays the help options for the various commands of the application.
+
+### EXIT
+
+Exits the application.
 
 Example Input and Output
-------------------------
+-----------
 
-### Example a
+### Example a: Regular Run
+Input:
 
-    PLACE 0,0,NORTH
+    PLACE 1,1,EAST
+    REPORT
+    EXIT
+    
+Output:
+
+    1,1,EAST
+    
+### Example b: User Attempts to Place off Table
+Input:
+
+    PLACE 5,5,EAST
+    PLACE 0,5,EAST
+    PLACE 5,0,EAST
+    PLACE 0,0,EAST
+    REPORT
+    EXIT
+    
+Output:
+
+    Position is off the board. Please ensure the xPosition is between 0 and 4, and the yPosition is between 0 and 4.
+    Position is off the board. Please ensure the xPosition is between 0 and 4, and the yPosition is between 0 and 4.
+    Position is off the board. Please ensure the xPosition is between 0 and 4, and the yPosition is between 0 and 4.
+    0,0,EAST
+
+### Example c: User Attempts to Move Robot off Table
+Input:
+
+    PLACE 0,0,EAST
+    MOVE
+    MOVE
+    MOVE
+    MOVE
     MOVE
     REPORT
 
-Expected output:
+Output:
 
-    0,1,NORTH
+    Cannot move robot from the position 4,0 in the direction EAST as position is off the table
+    4,0,EAST
 
-### Example b
+Tests
+-----------
+Use the following command to run the tests for the project.
 
-    PLACE 0,0,NORTH
-    LEFT
-    REPORT
+    $ dotnet test ToyRobotSimulator.Tests
+    
+This will run all the unit tests, as well as run the test files that are currently in the ToyRobotSimulator.Tests/TestInputFiles. You can add more tests yourself by adding your test file into the ToyRobotSimulator.Tests/TestInputFiles folder and the expected result in the ToyRobotSimulator.Tests/TestInputFiles/Results folder.
 
-Expected output:
+Copyright
+---------
 
-    0,0,WEST
-
-### Example c
-
-    PLACE 1,2,EAST
-    MOVE
-    MOVE
-    LEFT
-    MOVE
-    REPORT
-
-Expected output
-
-    3,3,NORTH
-
-Deliverables
-------------
-
-Please provide your source code, and any test code/data you using in
-developing your solution.
-
-Please engineer your solution to a standard you consider suitable for
-production. It is not required to provide any graphical output showing the
-movement of the toy robot.
-
-Please do not put your name in any of the submitted code since this makes it harder for us to review your submission anonymously.
+All code is freely available under the [MIT License](LICENSE).
