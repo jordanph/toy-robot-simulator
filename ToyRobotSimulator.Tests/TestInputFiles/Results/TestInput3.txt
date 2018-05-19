@@ -1,0 +1,10 @@
+Welcome to the toy robot simulator!
+To get started, please place the robot on the 5x5 board using PLACE x-positon,y-position,direction.
+Please use the HELP option at any time to see the valid inputs or EXIT to close the application.
+
+Cannot move robot from the position 4,0 in the direction EAST as position is off the table
+Cannot move robot from the position 4,4 in the direction NORTH as position is off the table
+Cannot move robot from the position 0,4 in the direction WEST as position is off the table
+Cannot move robot from the position 0,0 in the direction SOUTH as position is off the table
+0,0,SOUTH
+EXIT

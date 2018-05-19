@@ -1,0 +1,10 @@
+Welcome to the toy robot simulator!
+To get started, please place the robot on the 5x5 board using PLACE x-positon,y-position,direction.
+Please use the HELP option at any time to see the valid inputs or EXIT to close the application.
+
+Invalid input RIGHT. Please ensure the robot has been placed on the board using the PLACE command. Refer to HELP for more info.
+Invalid input LEFT. Please ensure the robot has been placed on the board using the PLACE command. Refer to HELP for more info.
+Invalid input MOVE. Please ensure the robot has been placed on the board using the PLACE command. Refer to HELP for more info.
+Invalid input REPORT. Please ensure the robot has been placed on the board using the PLACE command. Refer to HELP for more info.
+2,1,EAST
+EXIT
