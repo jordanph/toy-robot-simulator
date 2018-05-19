@@ -21,12 +21,16 @@ namespace ToyRobotSimulator.Infastructure
 
         public static string InvalidCommand(string command)
         {
-            return $"Unkown input {command}. Please refer to the {ValidInputs.Help} option for a detailed list of the valid inputs.";
+            return $"Unknown input {command}. Please refer to the {ValidInputs.Help} option for a detailed list of the valid inputs.";
         }
 
         public static string InvalidMove(Robot robot)
         {
             return $"Cannot move robot from the position {robot.Position.XPosition},{robot.Position.YPosition} in the direction {robot.Position.Direction.ToString().ToUpper()} as position is off the table";
         }
+        public static string RobotNotPlaced(string command) {
+            return $"Invalid input {command}. Please ensure the robot has been placed on the board using the {ValidInputs.Place} command. Refer to {ValidInputs.Help} for more info.";
+        }
+
     }
 }

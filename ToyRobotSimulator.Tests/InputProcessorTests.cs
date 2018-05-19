@@ -26,7 +26,7 @@ namespace ToyRobotSimulator.Tests
 
             var invalidCommand = "INVALIDINPUT";
 
-            Assert.Equal(inputProcessor.ProcessInput(invalidCommand), InputErrors.InvalidCommand(invalidCommand));
+            Assert.Equal(inputProcessor.ProcessInput(invalidCommand), InputErrors.RobotNotPlaced(invalidCommand));
         }
 
         [Fact]
@@ -81,6 +81,24 @@ namespace ToyRobotSimulator.Tests
             var moveCommand = ValidInputs.Move;
 
             Assert.Equal(inputProcessor.ProcessInput(moveCommand), InputErrors.InvalidMove(inputProcessor.Robot));
+        }
+
+        [Fact]
+        public void PassNullCommand()
+        {
+            var inputProcessor = new InputProcessor(Robot, Board);
+            Assert.Null(inputProcessor.ProcessInput(null));
+        }
+
+        [Fact]
+        public void NoOtherRobotCommandsValidUntilRobortPlace()
+        {
+            var inputProcessor = new InputProcessor(Robot, Board);
+
+            Assert.Equal(inputProcessor.ProcessInput(ValidInputs.Move), InputErrors.RobotNotPlaced(ValidInputs.Move));
+            Assert.Equal(inputProcessor.ProcessInput(ValidInputs.Left), InputErrors.RobotNotPlaced(ValidInputs.Left));
+            Assert.Equal(inputProcessor.ProcessInput(ValidInputs.Right), InputErrors.RobotNotPlaced(ValidInputs.Right));
+            Assert.Equal(inputProcessor.ProcessInput(ValidInputs.Report), InputErrors.RobotNotPlaced(ValidInputs.Report));
         }
     }
 }

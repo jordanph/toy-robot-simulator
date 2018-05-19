@@ -71,23 +71,25 @@ namespace ToyRobotSimulator.Models
         /// </summary>
         public Position Move()
         {
+            var newPosition = new Position(XPosition, YPosition, Direction);
+
             switch (Direction)
             {
                 case Direction.North:
-                    YPosition++;
+                    newPosition.YPosition++;
                     break;
                 case Direction.East:
-                    XPosition++;
+                    newPosition.XPosition++;
                     break;
                 case Direction.South:
-                    YPosition--;
+                    newPosition.YPosition--;
                     break;
                 case Direction.West:
-                    XPosition--;
+                    newPosition.XPosition--;
                     break;
             }
 
-            return this;
+            return newPosition;
         }
 
         public override string ToString()
