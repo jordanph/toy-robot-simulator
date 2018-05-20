@@ -16,7 +16,7 @@ namespace ToyRobotSimulator.Tests
             ProcessStartInfo processStartInfo = new ProcessStartInfo()
             {
                 FileName = "dotnet",
-                Arguments = Assembly.GetAssembly(typeof(Robot)).Location,
+                Arguments = $"run --project {Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent.FullName}\\ToyRobotSimulator",
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true
             };
